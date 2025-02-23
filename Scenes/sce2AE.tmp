@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://domn1k6nbaixx"]
+
+[ext_resource type="Script" path="res://Scripts/scene_manager.gd" id="1_umq2m"]
+[ext_resource type="PackedScene" uid="uid://dd4gltph85eix" path="res://Scenes/test_room.tscn" id="2_letxh"]
+[ext_resource type="PackedScene" uid="uid://y7vwvbig7k46" path="res://Scenes/test_room2.tscn" id="3_xvih4"]
+[ext_resource type="PackedScene" uid="uid://c4i3ur1s3tiaj" path="res://Scenes/encounter_window.tscn" id="4_xbqfe"]
+[ext_resource type="PackedScene" uid="uid://bymwyajms3rcm" path="res://Scenes/overworld_menu.tscn" id="5_w7kqy"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_umq2m")
+locations = Array[PackedScene]([ExtResource("2_letxh"), ExtResource("3_xvih4")])
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="EncounterWindow" parent="Menus" instance=ExtResource("4_xbqfe")]
+
+[node name="OverWorldMenu" parent="Menus" instance=ExtResource("5_w7kqy")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

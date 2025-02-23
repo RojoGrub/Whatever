@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf7hcseewp2bj"]
+
+[ext_resource type="Script" path="res://Scripts/notitem.gd" id="1_2y1oe"]
+
+[node name="NotItem" type="Node"]
+script = ExtResource("1_2y1oe")

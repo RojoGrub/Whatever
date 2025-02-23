@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnskhhw8qu0xk"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/enemy_texture.gd" id="1_q7o0w"]
+
+[node name="EnemyTexture" type="TextureRect"]
+script = ExtResource("1_q7o0w")

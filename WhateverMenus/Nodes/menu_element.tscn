@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://j7s6j103bv0t"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/menu_element.gd" id="1_gmupk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b0btn"]
+font_size = 40
+
+[node name="MenuElement" type="HBoxContainer"]
+script = ExtResource("1_gmupk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Name
+"
+label_settings = SubResource("LabelSettings_b0btn")
+horizontal_alignment = 1
+vertical_alignment = 1

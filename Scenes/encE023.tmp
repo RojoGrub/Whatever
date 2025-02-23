@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4i3ur1s3tiaj"]
+
+[ext_resource type="Script" path="res://Scripts/encounter_window.gd" id="1_3q0c8"]
+[ext_resource type="PackedScene" uid="uid://cgg211ouxurro" path="res://Scenes/story_window.tscn" id="1_naibi"]
+[ext_resource type="PackedScene" uid="uid://8fbsnwdepj83" path="res://Scenes/enemy_window.tscn" id="2_35agv"]
+[ext_resource type="PackedScene" uid="uid://di6rmjw7lkk6w" path="res://Scenes/status_window.tscn" id="4_6kbaj"]
+[ext_resource type="PackedScene" uid="uid://bne2fr3da0nb2" path="res://Scenes/command_window.tscn" id="5_uqdgf"]
+[ext_resource type="PackedScene" uid="uid://elxoii0kf6ql" path="res://Scenes/item_menu.tscn" id="6_eulat"]
+[ext_resource type="Script" path="res://Scripts/item_menu.gd" id="7_dc25m"]
+[ext_resource type="PackedScene" uid="uid://dy3u25vw5wunk" path="res://Scenes/spell_menu.tscn" id="8_ok56w"]
+[ext_resource type="Script" path="res://Scripts/spell_menu.gd" id="9_fp4pg"]
+
+[node name="EncounterWindow" type="Node2D"]
+script = ExtResource("1_3q0c8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemyWindow" parent="CanvasLayer/Control" instance=ExtResource("2_35agv")]
+layout_mode = 1
+offset_top = -286.0
+offset_bottom = 64.0
+
+[node name="StoryWindow" parent="CanvasLayer/Control" instance=ExtResource("1_naibi")]
+visible = true
+
+[node name="StatusWindow" parent="CanvasLayer/Control" instance=ExtResource("4_6kbaj")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 259.0
+offset_bottom = 353.0
+
+[node name="CommandWindow" parent="CanvasLayer/Control" instance=ExtResource("5_uqdgf")]
+layout_mode = 1
+offset_left = -259.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+
+[node name="ItemMenu" parent="CanvasLayer/Control" instance=ExtResource("6_eulat")]
+visible = true
+layout_mode = 1
+offset_left = -628.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+script = ExtResource("7_dc25m")
+
+[node name="SpellMenu" parent="CanvasLayer/Control" instance=ExtResource("8_ok56w")]
+layout_mode = 1
+offset_left = -626.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+script = ExtResource("9_fp4pg")

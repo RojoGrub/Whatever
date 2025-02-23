@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bks5npcv28pnn"]
+
+[ext_resource type="Script" path="res://Scripts/interactive.gd" id="1_thlcf"]
+[ext_resource type="PackedScene" uid="uid://cgg211ouxurro" path="res://WhateverMenus/Nodes/story_window.tscn" id="2_ckktr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul6tt"]
+
+[node name="Interactive" type="Node"]
+script = ExtResource("1_thlcf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ul6tt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StoryWindow" parent="CanvasLayer" instance=ExtResource("2_ckktr")]
+visible = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

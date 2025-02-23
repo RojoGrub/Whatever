@@ -1,0 +1,2 @@
+extends PlayerMenus
+class_name OverworldMenu

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://tmhg2a272y7k"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/menu_command.gd" id="1_80av1"]
+[ext_resource type="PackedScene" uid="uid://cna7vdf8bx8vp" path="res://WhateverMenus/Nodes/cursor.tscn" id="2_yqmb6"]
+[ext_resource type="PackedScene" uid="uid://b5t6agij7ea3t" path="res://WhateverMenus/Nodes/input_timer.tscn" id="3_3xxcu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kqhbi"]
+font_size = 40
+
+[node name="MenuCommand" type="HBoxContainer"]
+offset_right = 136.0
+offset_bottom = 55.0
+script = ExtResource("1_80av1")
+
+[node name="Cursor" parent="." instance=ExtResource("2_yqmb6")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Attack
+"
+label_settings = SubResource("LabelSettings_kqhbi")
+
+[node name="InputTimer" parent="." instance=ExtResource("3_3xxcu")]
+
+[connection signal="timeout" from="InputTimer" to="." method="_on_input_timer_timeout"]

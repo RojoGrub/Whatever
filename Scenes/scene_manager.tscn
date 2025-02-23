@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://domn1k6nbaixx"]
+
+[ext_resource type="Script" path="res://Scripts/scene_manager.gd" id="1_umq2m"]
+[ext_resource type="PackedScene" uid="uid://bihs2f8j5g7y2" path="res://WhateverMenus/Nodes/player_menus.tscn" id="4_jvcmc"]
+[ext_resource type="PackedScene" uid="uid://c4i3ur1s3tiaj" path="res://WhateverMenus/Nodes/encounter_menus.tscn" id="5_t6i60"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_umq2m")
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="PlayerMenus" parent="Menus" instance=ExtResource("4_jvcmc")]
+
+[node name="EncounterMenus" parent="Menus" instance=ExtResource("5_t6i60")]

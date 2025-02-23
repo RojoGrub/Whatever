@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4i3ur1s3tiaj"]
+
+[ext_resource type="Theme" uid="uid://cr7hpv4sgv3rx" path="res://Theme/whatever_theme.tres" id="1_bkpat"]
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/encounter_menus.gd" id="2_np7rp"]
+[ext_resource type="PackedScene" uid="uid://8fbsnwdepj83" path="res://WhateverMenus/Nodes/enemy_window.tscn" id="3_60yrq"]
+[ext_resource type="PackedScene" uid="uid://cgg211ouxurro" path="res://WhateverMenus/Nodes/story_window.tscn" id="4_1sne0"]
+[ext_resource type="PackedScene" uid="uid://di6rmjw7lkk6w" path="res://WhateverMenus/Nodes/status_window.tscn" id="5_blbxy"]
+[ext_resource type="PackedScene" uid="uid://bne2fr3da0nb2" path="res://WhateverMenus/Nodes/command_window.tscn" id="6_oq0tc"]
+[ext_resource type="PackedScene" uid="uid://elxoii0kf6ql" path="res://WhateverMenus/Nodes/item_menu.tscn" id="7_8ng7f"]
+[ext_resource type="PackedScene" uid="uid://dy3u25vw5wunk" path="res://WhateverMenus/Nodes/weapon_menu.tscn" id="8_cvm6k"]
+[ext_resource type="PackedScene" uid="uid://b5t6agij7ea3t" path="res://WhateverMenus/Nodes/input_timer.tscn" id="9_3lpxx"]
+
+[node name="EncounterMenus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bkpat")
+script = ExtResource("2_np7rp")
+
+[node name="EnemyWindow" parent="." instance=ExtResource("3_60yrq")]
+layout_mode = 1
+offset_top = -286.0
+offset_bottom = 64.0
+
+[node name="StoryWindow" parent="." instance=ExtResource("4_1sne0")]
+layout_mode = 1
+
+[node name="StatusWindow" parent="." instance=ExtResource("5_blbxy")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 259.0
+offset_bottom = 353.0
+
+[node name="CommandWindow" parent="." instance=ExtResource("6_oq0tc")]
+layout_mode = 1
+offset_left = -259.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+
+[node name="ItemMenu" parent="." instance=ExtResource("7_8ng7f")]
+layout_mode = 1
+offset_left = -628.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+
+[node name="WeaponMenu" parent="." instance=ExtResource("8_cvm6k")]
+layout_mode = 1
+offset_left = -626.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+
+[node name="InputTimer" parent="." instance=ExtResource("9_3lpxx")]
+
+[connection signal="totally_finished" from="StoryWindow" to="." method="_on_story_window_totally_finished"]

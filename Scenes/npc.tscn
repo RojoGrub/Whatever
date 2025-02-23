@@ -1,0 +1,179 @@
+[gd_scene load_steps=23 format=3 uid="uid://bw0hhfcfha1ov"]
+
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_lmtn1"]
+[ext_resource type="Texture2D" uid="uid://bvf4b75io26u1" path="res://Art/CharacterSheet.png" id="2_s1p42"]
+[ext_resource type="PackedScene" uid="uid://cgg211ouxurro" path="res://WhateverMenus/Nodes/story_window.tscn" id="3_rf6oo"]
+[ext_resource type="PackedScene" uid="uid://duhacd5m3crbu" path="res://Scenes/character.tscn" id="4_ixipl"]
+[ext_resource type="PackedScene" uid="uid://b5t6agij7ea3t" path="res://WhateverMenus/Nodes/input_timer.tscn" id="4_vciri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dweb4"]
+size = Vector2(34, 66.2921)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3llqr"]
+size = Vector2(56, 70.5)
+
+[sub_resource type="Animation" id="Animation_g2hk5"]
+resource_name = "Walk_Back"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_h3jry"]
+resource_name = "Walk_Front"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_cidj7"]
+resource_name = "Walk_Left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 6]
+}
+
+[sub_resource type="Animation" id="Animation_r2px3"]
+resource_name = "Walk_Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ew0vh"]
+_data = {
+"Walk_Back": SubResource("Animation_g2hk5"),
+"Walk_Front": SubResource("Animation_h3jry"),
+"Walk_Left": SubResource("Animation_cidj7"),
+"Walk_Right": SubResource("Animation_r2px3")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lrrbr"]
+animation = &"Walk_Front"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v3ume"]
+animation = &"Walk_Back"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pkvq"]
+animation = &"Walk_Front"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ht5ns"]
+animation = &"Walk_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vlrlk"]
+animation = &"Walk_Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_j1aqp"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_v3ume")
+blend_point_0/pos = Vector2(0, -0.5)
+blend_point_1/node = SubResource("AnimationNodeAnimation_0pkvq")
+blend_point_1/pos = Vector2(0, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ht5ns")
+blend_point_2/pos = Vector2(-0.5, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_vlrlk")
+blend_point_3/pos = Vector2(0.5, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7aonj"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mv5v0"]
+advance_mode = 2
+advance_expression = "velocity.length() > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8638c"]
+advance_mode = 2
+advance_expression = "velocity.length() == 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k5b6f"]
+states/Idle/node = SubResource("AnimationNodeAnimation_lrrbr")
+states/Idle/position = Vector2(431.333, 198.667)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_j1aqp")
+states/Walk/position = Vector2(685.333, 258.667)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7aonj"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_mv5v0"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_8638c")]
+
+[node name="NPC" type="CharacterBody2D"]
+y_sort_enabled = true
+motion_mode = 1
+script = ExtResource("1_lmtn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30.25)
+scale = Vector2(1, 0.445)
+shape = SubResource("RectangleShape2D_dweb4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 15.75)
+shape = SubResource("RectangleShape2D_3llqr")
+
+[node name="Body" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Animation" type="Sprite2D" parent="Body"]
+y_sort_enabled = true
+texture = ExtResource("2_s1p42")
+hframes = 2
+vframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ew0vh")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_k5b6f")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Walk/blend_position = Vector2(0, 0.917757)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StoryWindow" parent="CanvasLayer" instance=ExtResource("3_rf6oo")]
+visible = false
+
+[node name="Character" parent="." instance=ExtResource("4_ixipl")]
+
+[node name="InputTimer" parent="." instance=ExtResource("4_vciri")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]
+[connection signal="totally_finished" from="CanvasLayer/StoryWindow" to="." method="_on_story_window_totally_finished"]
+[connection signal="timeout" from="InputTimer" to="." method="_on_input_timer_timeout"]

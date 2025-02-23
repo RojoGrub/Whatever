@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq7o2qguvxq2w"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/item_menu_command.gd" id="1_p52su"]
+[ext_resource type="PackedScene" uid="uid://cna7vdf8bx8vp" path="res://WhateverMenus/Nodes/cursor.tscn" id="2_wjq2a"]
+[ext_resource type="PackedScene" uid="uid://b5t6agij7ea3t" path="res://WhateverMenus/Nodes/input_timer.tscn" id="3_ecjo8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_42io7"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_g73oy"]
+font_size = 40
+
+[node name="ItemMenuCommand" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 55.0
+grow_horizontal = 2
+script = ExtResource("1_p52su")
+
+[node name="Cursor" parent="." instance=ExtResource("2_wjq2a")]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/HBoxContainer"]
+layout_mode = 2
+text = "Heal Potion"
+label_settings = SubResource("LabelSettings_42io7")
+
+[node name="Colon" type="Label" parent="HSplitContainer/HBoxContainer"]
+layout_mode = 2
+text = ":  "
+label_settings = SubResource("LabelSettings_42io7")
+
+[node name="Quantity" type="Label" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "10
+"
+label_settings = SubResource("LabelSettings_g73oy")
+
+[node name="InputTimer" parent="." instance=ExtResource("3_ecjo8")]
+
+[connection signal="timeout" from="InputTimer" to="." method="_on_input_timer_timeout"]

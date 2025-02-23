@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bihs2f8j5g7y2"]
+
+[ext_resource type="Theme" uid="uid://cr7hpv4sgv3rx" path="res://Theme/whatever_theme.tres" id="1_k3h72"]
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/player_menus.gd" id="1_la6d2"]
+[ext_resource type="PackedScene" uid="uid://cgg211ouxurro" path="res://WhateverMenus/Nodes/story_window.tscn" id="2_ld5t0"]
+[ext_resource type="PackedScene" uid="uid://bne2fr3da0nb2" path="res://WhateverMenus/Nodes/command_window.tscn" id="3_408sv"]
+[ext_resource type="PackedScene" uid="uid://di6rmjw7lkk6w" path="res://WhateverMenus/Nodes/status_window.tscn" id="4_fhw1w"]
+[ext_resource type="PackedScene" uid="uid://elxoii0kf6ql" path="res://WhateverMenus/Nodes/item_menu.tscn" id="5_4idyf"]
+[ext_resource type="PackedScene" uid="uid://b5t6agij7ea3t" path="res://WhateverMenus/Nodes/input_timer.tscn" id="6_2exxi"]
+
+[node name="PlayerMenus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k3h72")
+script = ExtResource("1_la6d2")
+
+[node name="StoryWindow" parent="." instance=ExtResource("2_ld5t0")]
+layout_mode = 1
+
+[node name="CommandWindow" parent="." instance=ExtResource("3_408sv")]
+layout_mode = 1
+offset_left = -259.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+
+[node name="StatusWindow" parent="." instance=ExtResource("4_fhw1w")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 259.0
+offset_bottom = 353.0
+
+[node name="ItemMenu" parent="." instance=ExtResource("5_4idyf")]
+layout_mode = 1
+offset_left = -628.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 353.0
+
+[node name="InputTimer" parent="." instance=ExtResource("6_2exxi")]
+wait_time = 10.0

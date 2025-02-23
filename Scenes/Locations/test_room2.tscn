@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://y7vwvbig7k46"]
+
+[ext_resource type="Script" path="res://Scripts/location.gd" id="1_b7gwg"]
+[ext_resource type="PackedScene" uid="uid://bw0hhfcfha1ov" path="res://Scenes/npc.tscn" id="2_owqvn"]
+[ext_resource type="PackedScene" uid="uid://jxkb6qdksfub" path="res://Scenes/player.tscn" id="3_4xxku"]
+[ext_resource type="PackedScene" uid="uid://dawjv82ssqpsi" path="res://Scenes/scene_change_trigger.tscn" id="4_bnwoa"]
+
+[node name="Location" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_b7gwg")
+
+[node name="SceneChangeTrigger" parent="." instance=ExtResource("4_bnwoa")]
+position = Vector2(466, 51)
+next_scene = 0
+relative_position = Vector2(0, 60)
+disabled = false
+
+[node name="NPC" parent="." instance=ExtResource("2_owqvn")]
+position = Vector2(254, 393)
+speech = "Hello Captain! You smell."
+
+[node name="Player" parent="." instance=ExtResource("3_4xxku")]
+position = Vector2(684, 365)

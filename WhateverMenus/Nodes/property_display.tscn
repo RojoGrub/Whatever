@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhvc38m2h1aw0"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/property_display.gd" id="1_hm4iv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h4yne"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_keqlh"]
+font_size = 40
+
+[node name="PropertyDisplay" type="HBoxContainer"]
+script = ExtResource("1_hm4iv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "HP:"
+label_settings = SubResource("LabelSettings_h4yne")
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+text = "560"
+label_settings = SubResource("LabelSettings_keqlh")

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://di6rmjw7lkk6w"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/status_window.gd" id="1_srdh8"]
+[ext_resource type="PackedScene" uid="uid://j7s6j103bv0t" path="res://WhateverMenus/Nodes/menu_element.tscn" id="3_jf3xn"]
+[ext_resource type="PackedScene" uid="uid://bhvc38m2h1aw0" path="res://WhateverMenus/Nodes/property_display.tscn" id="3_tv445"]
+
+[node name="StatusWindow" type="MarginContainer"]
+offset_left = 32.0
+offset_top = 33.0
+offset_right = 291.0
+offset_bottom = 386.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_srdh8")
+status_elements = {
+"BP": [50, 2],
+"HP": [100, 1]
+}
+starting_elements = Array[PackedScene]([ExtResource("3_tv445"), ExtResource("3_jf3xn")])
+
+[node name="TextWindowPanel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="InsideMarginContainer" type="MarginContainer" parent="TextWindowPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Info" type="VBoxContainer" parent="TextWindowPanel/InsideMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0

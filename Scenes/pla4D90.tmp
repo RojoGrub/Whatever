@@ -1,0 +1,162 @@
+[gd_scene load_steps=19 format=3 uid="uid://jxkb6qdksfub"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_n7wpu"]
+[ext_resource type="PackedScene" uid="uid://bafmfnhbslv2s" path="res://Scenes/player_character.tscn" id="2_3n5r0"]
+[ext_resource type="Texture2D" uid="uid://bvf4b75io26u1" path="res://Art/CharacterSheet.png" id="2_xrwb3"]
+[ext_resource type="PackedScene" uid="uid://r8dqkl8ooxnl" path="res://Scenes/player_inventory.tscn" id="3_v7tmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn2bg"]
+size = Vector2(14.3791, 19)
+
+[sub_resource type="Animation" id="Animation_g2hk5"]
+resource_name = "Walk_Back"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_h3jry"]
+resource_name = "Walk_Front"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_cidj7"]
+resource_name = "Walk_Left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 6]
+}
+
+[sub_resource type="Animation" id="Animation_r2px3"]
+resource_name = "Walk_Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Animation:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ew0vh"]
+_data = {
+"Walk_Back": SubResource("Animation_g2hk5"),
+"Walk_Front": SubResource("Animation_h3jry"),
+"Walk_Left": SubResource("Animation_cidj7"),
+"Walk_Right": SubResource("Animation_r2px3")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v3ume"]
+animation = &"Walk_Back"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0pkvq"]
+animation = &"Walk_Front"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ht5ns"]
+animation = &"Walk_Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vlrlk"]
+animation = &"Walk_Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_j1aqp"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_v3ume")
+blend_point_0/pos = Vector2(0, -0.5)
+blend_point_1/node = SubResource("AnimationNodeAnimation_0pkvq")
+blend_point_1/pos = Vector2(0, 0.5)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ht5ns")
+blend_point_2/pos = Vector2(-0.5, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_vlrlk")
+blend_point_3/pos = Vector2(0.5, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_87ftu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k5b6f"]
+states/Start/position = Vector2(394, 124.667)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_j1aqp")
+states/Walk/position = Vector2(685.333, 258.667)
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_87ftu")]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxleb"]
+size = Vector2(49, 26)
+
+[node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+motion_mode = 1
+script = ExtResource("1_n7wpu")
+walk_speed = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 34.5)
+scale = Vector2(2.295, 1)
+shape = SubResource("RectangleShape2D_hn2bg")
+
+[node name="Body" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Animation" type="Sprite2D" parent="Body"]
+y_sort_enabled = true
+texture = ExtResource("2_xrwb3")
+hframes = 2
+vframes = 4
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ew0vh")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_k5b6f")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Walk/blend_position = Vector2(0, 0.917757)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 34)
+shape = SubResource("RectangleShape2D_nxleb")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_3n5r0")]
+character_name = "Cap"
+
+[node name="PlayerInventory" parent="." instance=ExtResource("3_v7tmo")]
+items = Array[PackedScene]([])
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

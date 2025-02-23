@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://elxoii0kf6ql"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/item_menu.gd" id="1_2v000"]
+[ext_resource type="PackedScene" uid="uid://b5t6agij7ea3t" path="res://WhateverMenus/Nodes/input_timer.tscn" id="3_mvdob"]
+
+[node name="ItemMenu" type="MarginContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -661.0
+offset_top = 36.0
+offset_right = -33.0
+offset_bottom = 389.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_2v000")
+
+[node name="TextWindowPanel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="InsideMarginContainer" type="MarginContainer" parent="TextWindowPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Info" type="VBoxContainer" parent="TextWindowPanel/InsideMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="InputTimer" parent="." instance=ExtResource("3_mvdob")]
+
+[connection signal="timeout" from="InputTimer" to="." method="_on_input_timer_timeout"]

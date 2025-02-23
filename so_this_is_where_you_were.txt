@@ -1,0 +1,43 @@
+Whatever was the project for the 2025.1 Brackeys game jam. The theme was:
+Nothing Can Go Wrong
+
+You started with the incomplete menus from Blood Rocket and actually gave them 
+some functionality.
+
+When you started this project we you working towards making a story about a captain
+of a sandship that has a number of misfortunate events happen to him.
+
+When you had some basic, but not perfect, functionality and started the art, it 
+became apparent that it was going to take too much time to make all those assets
+in the remaining time.
+
+You decided to pivot and make a stupid story using the placeholder assets you had
+and some quickly scribbled line drawings.
+
+The story was about a future where all the people are a clone of a single person.
+
+You started working on that but wasted a lot of time, in terms of making this game,
+rewriting the code that should have been ignored. Thing were kind of messy at that
+point.
+
+In the process of that, you actually made a basic functional menu system but no real game.
+
+Now you have the basic elements of a menu driven game in this package. It's still missing
+a lot of stuff though.
+
+You were in the process of setting up:
+	the inventory system that collects item quantities
+	the character system to use a dictionary to create the status attributes
+	the command system to have a single function per command
+	the interactive system to act as a base for all interactive objects
+	
+Things that this project needs:
+	A better encounter loop that allows the turn of the characters to be based
+	upon attributes -- right now the encounter loop is a chain connected to the 
+	story window and enemy signals
+	
+	More interactives like shops n stuff
+
+But this package should give you a better headstart on the next gamejam.
+
+Some of this stuff is also going to be useful for Dobble Trobble.

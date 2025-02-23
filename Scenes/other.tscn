@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://def4du4chr5rl"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ygbso"]
+[ext_resource type="Texture2D" uid="uid://dcufpkbf2eknh" path="res://_old/BloodRocketStuff/Character-Sheet-Blank.png" id="2_jplfn"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_ygbso")
+character_graphic = ExtResource("2_jplfn")

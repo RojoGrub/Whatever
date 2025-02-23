@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cr7hpv4sgv3rx"]
+
+[ext_resource type="FontFile" uid="uid://kpct4sqehrh2" path="res://Fonts/HighVoltage Rough.ttf" id="1_eywy0"]
+[ext_resource type="StyleBox" uid="uid://cqyr2nguty5ll" path="res://Theme/whatever_window_style.tres" id="1_fgyma"]
+[ext_resource type="FontFile" uid="uid://be4ncfxr6nb01" path="res://Fonts/Warpaint.ttf" id="2_461kg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1v72"]
+
+[resource]
+default_font = ExtResource("2_461kg")
+default_font_size = 30
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 47
+Label/fonts/font = ExtResource("1_eywy0")
+Label/styles/normal = SubResource("StyleBoxEmpty_f1v72")
+Panel/styles/panel = ExtResource("1_fgyma")

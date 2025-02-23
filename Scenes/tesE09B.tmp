@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd4gltph85eix"]
+
+[ext_resource type="Script" path="res://Scripts/location.gd" id="1_px6qx"]
+[ext_resource type="PackedScene" uid="uid://bw0hhfcfha1ov" path="res://Scenes/npc.tscn" id="2_xka6g"]
+[ext_resource type="PackedScene" uid="uid://jxkb6qdksfub" path="res://Scenes/player.tscn" id="3_webuy"]
+[ext_resource type="PackedScene" uid="uid://dawjv82ssqpsi" path="res://Scenes/scene_change_trigger.tscn" id="4_yaxy1"]
+
+[node name="Lair" type="Node2D"]
+script = ExtResource("1_px6qx")
+location_name = "TestRoom"
+
+[node name="NPC" parent="." instance=ExtResource("2_xka6g")]
+position = Vector2(690, 298)
+
+[node name="JackMarvel" parent="." instance=ExtResource("3_webuy")]
+position = Vector2(463, 301)
+
+[node name="SceneChangeTrigger" parent="." instance=ExtResource("4_yaxy1")]
+position = Vector2(468, 432)
+relative_position = Vector2(0, -100)
+disabled = false

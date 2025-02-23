@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://botfwj57gnfgw"]
+
+[ext_resource type="Script" path="res://scene_manager.gd" id="1_umq2m"]
+[ext_resource type="PackedScene" uid="uid://d35slp3ffo5gv" path="res://lair.tscn" id="2_bcika"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_umq2m")
+
+[node name="Lair" parent="." instance=ExtResource("2_bcika")]
+location_name = "The Lair"

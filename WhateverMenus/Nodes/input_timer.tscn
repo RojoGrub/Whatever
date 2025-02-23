@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5t6agij7ea3t"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/input_timer.gd" id="1_5vt3d"]
+
+[node name="InputTimer" type="Timer"]
+wait_time = 0.1
+script = ExtResource("1_5vt3d")

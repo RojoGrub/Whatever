@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://8fbsnwdepj83"]
+
+[ext_resource type="Script" path="res://WhateverMenus/Scripts/enemy_level.gd" id="1_b63ky"]
+[ext_resource type="PackedScene" uid="uid://cnskhhw8qu0xk" path="res://WhateverMenus/Nodes/enemy_texture.tscn" id="2_3bhb8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dh0p"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+
+[node name="EnemyWindow" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -260.0
+offset_right = 175.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5dh0p")
+script = ExtResource("1_b63ky")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Enemy" parent="MarginContainer" instance=ExtResource("2_3bhb8")]
+layout_mode = 2

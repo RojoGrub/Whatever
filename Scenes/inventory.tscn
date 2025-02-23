@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsl03d35vojpt"]
+
+[ext_resource type="Script" path="res://Scripts/inventory.gd" id="1_xi3l6"]
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource("1_xi3l6")
+
+[node name="Bag" type="Node" parent="."]
+
+[node name="Junk" type="Node" parent="."]
