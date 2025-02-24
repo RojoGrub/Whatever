@@ -4,7 +4,7 @@ class_name Player
 @export var walk_speed = 100
 @export var max_bullets : int = 6
 
-var other : NPC = null
+var other : Interactive = null
 var ignore_pause = false
 
 var character_sheet : Character

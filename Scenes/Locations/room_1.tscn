@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw4iv05c2cjd3"]
+[gd_scene load_steps=10 format=3 uid="uid://bw4iv05c2cjd3"]
 
 [ext_resource type="Texture2D" uid="uid://b0ekbl5yceioc" path="res://Art/Room1/Room1Background.png" id="1_kj7rh"]
 [ext_resource type="Script" path="res://Scripts/location.gd" id="1_wih87"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cu00bgpp6x5v2" path="res://Art/Room1/Room1Bed.png" id="4_s4oic"]
 [ext_resource type="Texture2D" uid="uid://gqjyh5jtbl6b" path="res://Art/Room1/Room1FourthWallWithDoor.png" id="5_1a6xw"]
 [ext_resource type="PackedScene" uid="uid://jxkb6qdksfub" path="res://Scenes/player.tscn" id="6_wegt3"]
+[ext_resource type="PackedScene" uid="uid://d1s7rnpobkfdr" path="res://Scenes/item_cylinder.tscn" id="8_ij80k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exs84"]
 size = Vector2(1252, 231)
@@ -74,3 +75,6 @@ shape = SubResource("RectangleShape2D_exs84")
 [node name="Player" parent="." instance=ExtResource("6_wegt3")]
 position = Vector2(474, 326)
 scale = Vector2(1.5, 1.5)
+
+[node name="ItemCylinder" parent="." instance=ExtResource("8_ij80k")]
+position = Vector2(179, 198)

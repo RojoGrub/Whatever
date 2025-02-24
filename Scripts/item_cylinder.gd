@@ -9,13 +9,11 @@ func _process(_delta):
 		interact()
 	
 func interact():
-	pass
-	
+	super()
 	empty = true
 
 func _on_story_window_totally_finished():
 	pass
-	#$CanvasLayer/StoryWindow.hide_window()
 
 func _on_body_entered(body):
 	if body is Player:

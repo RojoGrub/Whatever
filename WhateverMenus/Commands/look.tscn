@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnw3bx1f1ekpk"]
+
+[ext_resource type="PackedScene" uid="uid://tmhg2a272y7k" path="res://WhateverMenus/Nodes/menu_command.tscn" id="1_5lssj"]
+[ext_resource type="Script" path="res://WhateverMenus/Commands/Scripts/look.gd" id="2_v3fa8"]
+
+[node name="Look" instance=ExtResource("1_5lssj")]
+script = ExtResource("2_v3fa8")
