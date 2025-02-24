@@ -3,7 +3,7 @@ class_name Interactive
 
 @export var its_name : String = "Object"
 @export var look_message : String = "This thing is boring."
-@export var interact_message : String = "Thing does nothing."
+@export var interact_message : String = "This does nothing."
 @export var attack_message : String = "Ouch! That hurt."
 
 var other
@@ -24,3 +24,5 @@ func _on_area_2d_body_entered(_body):
 
 func _on_area_2d_body_exited(_body):
 	pass # Replace with function body.
+
+# here is another comment
