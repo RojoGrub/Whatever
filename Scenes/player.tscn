@@ -132,7 +132,6 @@ y_sort_enabled = true
 texture = ExtResource("2_xrwb3")
 hframes = 2
 vframes = 4
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

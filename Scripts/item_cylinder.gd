@@ -12,6 +12,10 @@ func interact():
 	super()
 	empty = true
 
+func look():
+	look_message = "This is your own personal Item Cylinder. It holds your stuff."
+	super()
+
 func _on_story_window_totally_finished():
 	pass
 

@@ -22,6 +22,8 @@ signal queue_command(callable : Callable, arguements : Array)
 func _ready():
 	start_input_timer()
 	set_label(label)
+	location = get_tree().root.get_node("Location")
+	player = location.get_node("Player")
 		
 func _process(_delta):
 	if pause_input:
