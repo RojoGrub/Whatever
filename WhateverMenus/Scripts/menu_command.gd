@@ -6,7 +6,7 @@ class_name MenuCommand
 @export var calls_menu = false
 @export var calls_action = false
 
-@export var player : Character
+@export var player : Player
 @export var other : Interactive
 @export var location: Location
 @export var story_window : StoryWindow
@@ -14,7 +14,7 @@ class_name MenuCommand
 var pause_input = false
 var connection : String = "_on_command"
 
-signal command(player : Character, other : Interactive, location : Location)
+signal command(player : Player, other : Interactive, location : Location)
 
 signal command_call_action()
 signal queue_command(callable : Callable, arguements : Array)
@@ -49,13 +49,13 @@ func activate():
 func disable_parent():
 	get_parent().owner.disable_and_hide()
 
-func _on_command(p : Character = player, o : Interactive = other, l : Location = location):
-	message.format({"p_name": p.character_name, \
+func _on_command(p : Player = player, o : Interactive = other, l : Location = location):
+	message.format({"p_name": p.get_node("Character").character_name,
 					"o_name": o.o_name,
 					"l_name": l.location_name})
 	story_window.setup_story_window_with_message(message)
 	
-func _on_command_call_action(p : Character = player, o : Interactive = other, l : Location = location) :
+func _on_command_call_action(p : Player = player, o : Interactive = other, l : Location = location) :
 	var callable = Callable(self, connection)
 	var arguments = [p, o, l]
 	queue_command.emit(callable, arguments)
